@@ -11,12 +11,12 @@ private:
     double weight;
 
 public:
-    Animal(const string &name, const double &weight);
+    Animal(string name, double weight);
     string getName() const;
     double getWeight() const;
-    void setName(const string &name);
-    void setWeight(const double &weight);
-    string makeNoise() const;
+    void setName(string name);
+    void setWeight(double weight);
+    string makeNoise();
 };
 
 #endif
