@@ -12,11 +12,13 @@ private:
 
 public:
     Animal(string name, double weight);
+    virtual ~Animal();
     string getName() const;
     double getWeight() const;
     void setName(string name);
     void setWeight(double weight);
-    string makeNoise();
+    virtual string makeNoise() const = 0;
+    virtual string eat() const = 0;
 };
 
 #endif

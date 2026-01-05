@@ -18,7 +18,7 @@ void Dog::digHole() const
     cout << "I'm diggin' a hole!" << endl;
 }
 
-string Dog::makeNoise()
+string Dog::makeNoise() const
 {
     return "Woof!";
 }
@@ -26,4 +26,9 @@ string Dog::makeNoise()
 void Dog::chaseCat() const
 {
     cout << "Here, kitty kitty!" << endl;
+}
+
+string Dog::eat() const
+{
+    return "I love dog food!";
 }

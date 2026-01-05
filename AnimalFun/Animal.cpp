@@ -6,6 +6,10 @@ Animal::Animal(string name, double weight)
     this->weight = weight;
 }
 
+Animal::~Animal()
+{
+}
+
 string Animal::getName() const
 {
     return name;
@@ -26,7 +30,7 @@ void Animal::setWeight(double weight)
     this->weight = weight;
 }
 
-string Animal::makeNoise()
+string Animal::makeNoise() const
 {
     return "unknown";
 }
