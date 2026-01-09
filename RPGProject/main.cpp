@@ -37,78 +37,109 @@ Race getPlayerRace(int raceVal)
     }
 }
 
-int main()
+int mainMenu()
 {
-    int menuChoice;
+    int choice;
+    cout << "*****RPG GAME PLAYER CREATOR*****" << endl;
+    cout << "1. Create Player" << endl;
+    cout << "2. View Players" << endl;
+    cout << "3. Exit" << endl;
+
+    cout << "\nSelect an option: ";
+    cin >> choice;
+    cin.get();
+    return choice;
+}
+
+void createPlayer(vector<Player *> &players)
+{
     int profession;
     int raceVal;
     Race race;
     string name;
 
+    clrscr();
+    cout << "1. Warrior\n2. Priest\n3. Mage" << endl;
+    cout << "Select the player profession (Type the option number):  ";
+    cin >> profession;
+    cin.get();
+    cout << "\n1. Human\n2. Elf\n3. Dwarf\n4. Orc\n5. Troll" << endl;
+    cout << "Select the player race (Type the option number): ";
+    cin >> raceVal;
+    cin.get();
+    race = getPlayerRace(raceVal);
+    cout << "Choose a player name: ";
+    cin >> name;
+    cin.get();
+    Player *player;
+    if (profession == 1)
+    {
+        player = new Warrior(name, race, 200, 0);
+    }
+    else if (profession == 2)
+    {
+        player = new Priest(name, race, 100, 200);
+    }
+    else if (profession == 3)
+    {
+        player = new Mage(name, race, 150, 150);
+    }
+    players.push_back(player);
+    cout << "Player created!" << endl;
+    cin.get();
+}
+
+void showPlayers(vector<Player *> &players)
+{
+    clrscr();
+    if (players.size() > 0)
+    {
+        for (auto player : players)
+        {
+            cout << "[" << player->getName() << "] I'm a " << player->whatRace() << " and my attack is: " << player->attack() << endl;
+        }
+    }
+    else
+    {
+        cout << "No players in da house..." << endl;
+    }
+    cin.get();
+}
+
+void cleanUp(vector<Player *> players)
+{
+    for (auto player : players)
+    {
+        delete player;
+    }
+    players.clear();
+}
+int main()
+{
+    int menuChoice;
+
     vector<Player *> players;
 
     while (true)
     {
-        clrscr();
-        cout << "*****RPG GAME PLAYER CREATOR*****" << endl;
-        cout << "1. Create Player" << endl;
-        cout << "2. View Players" << endl;
-        cout << "3. Exit" << endl;
 
-        cout << "\nSelect an option: ";
-        cin >> menuChoice;
-        cin.get();
+        clrscr();
+
+        menuChoice = mainMenu();
 
         if (menuChoice == 1)
         {
-            clrscr();
-            cout << "1. Warrior\n2. Priest\n3. Mage" << endl;
-            cout << "Select the player profession (Type the option number):  ";
-            cin >> profession;
-            cin.get();
-            cout << "\n1. Human\n2. Elf\n3. Dwarf\n4. Orc\n5. Troll" << endl;
-            cout << "Select the player race (Type the option number): ";
-            cin >> raceVal;
-            cin.get();
-            race = getPlayerRace(raceVal);
-            cout << "Choose a player name: ";
-            cin >> name;
-            cin.get();
-            Player *player;
-            if (profession == 1)
-            {
-                player = new Warrior(name, race, 200, 0);
-            }
-            else if (profession == 2)
-            {
-                player = new Priest(name, race, 100, 200);
-            }
-            else if (profession == 3)
-            {
-                player = new Mage(name, race, 150, 150);
-            }
-            players.push_back(player);
-            cout << "Player created!" << endl;
-            cin.get();
+            createPlayer(players);
         }
         else if (menuChoice == 2)
         {
-            clrscr();
-            if (players.size() > 0)
-            {
-                for (auto player : players)
-                {
-                    cout << "[" << player->getName() << "] I'm a " << player->whatRace() << " and my attack is: " << player->attack() << endl;
-                }
-            }
-            else
-            {
-                cout << "No players in da house..." << endl;
-            }
-            cin.get();
+            showPlayers(players);
+        }
+        else if (menuChoice == 3)
+        {
+            cleanUp(players);
+            return 1;
         }
     }
-
-    // cout << "You've seleced the option " << menuChoice << endl;
     return 0;
 }
