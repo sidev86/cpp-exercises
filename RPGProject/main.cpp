@@ -106,7 +106,7 @@ void showPlayers(vector<Player *> &players)
     cin.get();
 }
 
-void cleanUp(vector<Player *> players)
+void cleanUp(vector<Player *> &players)
 {
     for (auto player : players)
     {
