@@ -117,14 +117,11 @@ void cleanUp(vector<Player *> &players)
 int main()
 {
     int menuChoice;
-
     vector<Player *> players;
 
     while (true)
     {
-
         clrscr();
-
         menuChoice = mainMenu();
 
         if (menuChoice == 1)
