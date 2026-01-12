@@ -1,0 +1,35 @@
+#include <iostream>
+#include <deque>
+
+using namespace std;
+
+void printDeque(const deque<int> &deck);
+
+int main()
+{
+    deque<int> myDeck;
+
+    myDeck.push_back(1);
+    myDeck.push_back(5);
+    myDeck.push_back(10);
+
+    cout << "First print: " << endl;
+    printDeque(myDeck);
+
+    myDeck.push_front(30);
+    myDeck.push_front(20);
+
+    cout << "Next print: " << endl;
+    printDeque(myDeck);
+
+    return 0;
+}
+
+void printDeque(const deque<int> &deck)
+{
+    for (int num : deck)
+    {
+        cout << num << endl;
+    }
+    cout << endl;
+}
