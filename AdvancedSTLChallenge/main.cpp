@@ -27,7 +27,7 @@ int main()
     // removing items that has word of less than 4 letters
     for (auto it = items.begin(); it != items.end();)
     {
-        if ((*it).length() < 4)
+        if (it->length() < 4)
         {
             it = items.erase(it);
         }
@@ -60,7 +60,7 @@ int main()
         cout << pair.first << ": " << pair.second << endl;
     }
 
-    cout << "Looking up for element 'glue'..." << endl;
+    cout << "\nLooking up for element 'glue'..." << endl;
 
     auto it1 = orderedItemsWordLength.find("glue");
 
@@ -73,14 +73,14 @@ int main()
         cout << "Element not found" << endl;
     }
 
-    cout << "=== Unordered Map Items List ===" << endl;
+    cout << "\n=== Unordered Map Items List ===" << endl;
 
     for (const auto &pair : unorderedItemsWordLength)
     {
         cout << pair.first << ": " << pair.second << endl;
     }
 
-    cout << "Looking up for element 'screwdriver'..." << endl;
+    cout << "\nLooking up for element 'screwdriver'..." << endl;
 
     auto it2 = unorderedItemsWordLength.find("screwdriver");
 
