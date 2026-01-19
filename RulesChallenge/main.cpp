@@ -18,5 +18,13 @@ int main()
 
     cout << "buf4 ";
     buf4.print();
+
+    Buffer buf5("Grappaspezialecozzevongole");
+
+    buf5 = std::move(buf4);
+    cout << "buf5 ";
+    buf5.print();
+    cout << "buf4 ";
+    buf4.print();
     return 0;
 }
