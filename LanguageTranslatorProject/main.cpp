@@ -13,11 +13,11 @@ int main()
     int menuChoice;
     LanguageTranslator translator;
 
-    cout << "***LANGUAGE TRANSLATOR (VER 1.0)***\n"
-         << endl;
     while (true)
     {
         clrscr();
+        cout << "***LANGUAGE TRANSLATOR (VER 1.0)***\n"
+             << endl;
         printMenu();
         cout << "\nSelect a menu option by typing the option number: ";
         cin >> menuChoice;
@@ -26,11 +26,14 @@ int main()
         {
         case 1:
             addUpdateTranslation(translator);
+            cin.get();
             break;
         case 2:
             retrieveTranslation(translator);
+            cin.get();
             break;
         case 3:
+            clrscr();
             translator.printAll();
             cin.get();
             break;
@@ -41,8 +44,6 @@ int main()
             break;
         }
     }
-    cin.get();
-
     return 0;
 }
 
@@ -64,6 +65,8 @@ void addUpdateTranslation(LanguageTranslator &translator)
     string englishWord;
     string translatedWord;
 
+    clrscr();
+
     cout << "Insert the english word to translate: ";
     cin >> englishWord;
     cout << "\nInsert the translated word: ";
@@ -71,14 +74,17 @@ void addUpdateTranslation(LanguageTranslator &translator)
 
     translator.addTranslation(englishWord, translatedWord);
     cout << "Translator Updated." << endl;
+    cin.get();
 }
 
 void retrieveTranslation(const LanguageTranslator &translator)
 {
     string englishWord;
+    clrscr();
     cout << "Type the english word to translate: ";
     cin >> englishWord;
     cout << "\nChecking the translation for the word '" << englishWord << "'" << endl;
 
     cout << englishWord << " ->  " << translator.getTranslation(englishWord) << endl;
+    cin.get();
 }

@@ -26,10 +26,10 @@ void LanguageTranslator::printAll() const
   if (translations.size() == 0)
   {
     cout << "No entries in translator found!" << endl;
-    cin.get();
   }
   for (const auto &pair : translations)
   {
     cout << pair.first << ": " << pair.second << endl;
   }
+  cin.get();
 }
