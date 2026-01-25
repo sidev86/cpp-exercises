@@ -30,35 +30,35 @@ bool Crop::operator==(const Crop &other) const
     // cout << "this score: " << this->getScore() << ", other score: " << other.getScore() << endl;
     return getScore() == other.getScore();
 }
-bool Crop::operator!=(Crop &other) const
+bool Crop::operator!=(const Crop &other) const
 {
     return !(*this == other);
 }
-bool Crop::operator<(Crop &other) const
+bool Crop::operator<(const Crop &other) const
 {
     return this->getScore() < other.getScore();
 }
-bool Crop::operator>(Crop &other) const
+bool Crop::operator>(const Crop &other) const
 {
     return this->getScore() > other.getScore();
 }
-bool Crop::operator<=(Crop &other) const
+bool Crop::operator<=(const Crop &other) const
 {
     return this->getScore() <= other.getScore();
 }
-bool Crop::operator>=(Crop &other) const
+bool Crop::operator>=(const Crop &other) const
 {
     return this->getScore() >= other.getScore();
 }
-Crop Crop::operator+(Crop &other) const
+Crop Crop::operator+(const Crop &other) const
 {
     srand(time(nullptr));
-    int varHeight = (height + other.height) / 2 + (rand() % 2 * 2 - 1);
-    int varYield = (yield + other.yield) / 2 + (rand() % 2 * 2 - 1);
-    int varResistance = (droughtResistance + other.droughtResistance) / 2 + (rand() % 2 * 2 - 1);
+    int varHeight = (height + other.height) / 2 + (rand() % 3 - 1);
+    int varYield = (yield + other.yield) / 2 + (rand() % 3 - 1);
+    int varResistance = (droughtResistance + other.droughtResistance) / 2 + (rand() % 3 - 1);
     return Crop(varHeight, varYield, varResistance);
 }
-void Crop::operator=(Crop &other)
+void Crop::operator=(const Crop &other)
 {
     height = other.height;
     yield = other.yield;

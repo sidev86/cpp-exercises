@@ -11,13 +11,13 @@ public:
     int getScore() const;
 
     bool operator==(const Crop &other) const;
-    bool operator!=(Crop &other) const;
-    bool operator<(Crop &other) const;
-    bool operator>(Crop &other) const;
-    bool operator<=(Crop &other) const;
-    bool operator>=(Crop &other) const;
-    Crop operator+(Crop &other) const;
-    void operator=(Crop &other);
+    bool operator!=(const Crop &other) const;
+    bool operator<(const Crop &other) const;
+    bool operator>(const Crop &other) const;
+    bool operator<=(const Crop &other) const;
+    bool operator>=(const Crop &other) const;
+    Crop operator+(const Crop &other) const;
+    void operator=(const Crop &other);
 
 private:
     int height;
