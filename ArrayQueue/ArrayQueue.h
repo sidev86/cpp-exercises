@@ -59,6 +59,7 @@ class ArrayQueue : public Queue
             else
             {
                 cout << "Cannot peek from the front. The queue is empty" << endl;
+                return 0;
             }
         }
         bool isEmpty() const override
