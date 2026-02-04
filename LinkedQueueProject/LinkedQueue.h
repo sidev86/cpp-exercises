@@ -14,12 +14,11 @@ class LinkedQueue : public Queue
         {
             m_head = nullptr;
             m_end = nullptr;
-            m_numElements = 0;
         }
 
         virtual ~LinkedQueue()
         {
-
+            makeEmpty();
         }
 
         void enqueue(int newEntry) override
@@ -28,7 +27,6 @@ class LinkedQueue : public Queue
             {
                 m_head = new Node(newEntry, nullptr, nullptr);
                 m_end = m_head;
-                cout << "first node -> " << m_head->getData() << endl;
             }
             else
             {
@@ -37,27 +35,19 @@ class LinkedQueue : public Queue
                 m_head = newNode;
                 oldNode->setPrev(newNode);
                 newNode->setNext(oldNode);
-                cout << "new node -> " << m_head->getData() << endl;
-                cout << "next node -> " << m_head->getNext()->getData() << endl;
-                cout << "old node prev -> " << m_end->getPrev()->getData() << endl;
             }
-            m_numElements++;
-            cout << "NUm of elements = " << m_numElements << endl;
         }
 
         int dequeue() override
         {
             if(!isEmpty())
             {
-                //cout << "dequeue (not empty)" << endl;
-
                 Node* temp = m_end;
-                dataToReturn = m_end->getData();
+                int dataToReturn = m_end->getData();
                 
                 m_end = m_end->getPrev();
                 delete temp;
                 temp = nullptr;
-                m_numElements--;
                 return dataToReturn;
             }
             else
@@ -71,7 +61,7 @@ class LinkedQueue : public Queue
         {
             if (!isEmpty())
             {
-                return m_head->getData();
+                return m_end->getData();
             }
             else
             {
@@ -82,23 +72,18 @@ class LinkedQueue : public Queue
 
         bool isEmpty() const override
         {
-            return m_numElements == 0;
+            return m_end == nullptr;
         }
 
         void makeEmpty() override
         {
             while(!isEmpty())
             {
-                Node* temp = m_head;
-                m_head = m_head->getNext();
-                delete temp;
-                m_numElements--;
+                dequeue();
             }
         }
 
     private:
-        int m_numElements;
-        int dataToReturn;
         Node* m_head;
         Node *m_end;
 };

@@ -13,7 +13,11 @@ int main()
     queue.enqueue(75);
     queue.enqueue(43);
 
-     printQueue(queue);
+    cout << "First element in queue -> " << queue.peekFront() << endl ;
+    printQueue(queue);
+
+    //Trying to dequeue from the empty queue (showing error)
+    queue.dequeue();
     return 0;
 }
 
